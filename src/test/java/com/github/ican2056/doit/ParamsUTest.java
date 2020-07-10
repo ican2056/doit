@@ -1,5 +1,6 @@
-package github.com.ican2056.doit.util;
+package com.github.ican2056.doit;
 
+import com.github.ican2056.doit.ParamsU;
 import org.junit.Assert;
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package github.com.ican2056.doit.util;
+package com.github.ican2056.doit;
 
 import java.util.HashMap;
 import java.util.Map;

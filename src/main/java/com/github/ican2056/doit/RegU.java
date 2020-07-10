@@ -1,4 +1,4 @@
-package github.com.ican2056.doit.util;
+package com.github.ican2056.doit;
 
 /**
  * 正则工具类
