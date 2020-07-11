@@ -6,19 +6,104 @@
 
     <groupId>com.github.ican2056</groupId>
     <artifactId>doit</artifactId>
-    <version>1.0-RELEASE</version>
+    <version>1.2.0-SNAPSHOT</version>
 
     <name>${project.groupId}:${project.artifactId}</name>
     <description>通用公共组件，方便快速开发业务</description>
     <url>https://github.com/ican2056/doit</url>
 
+    <properties>
+        <spring.version>5.1.16.RELEASE</spring.version>
+        <aspectj.version>1.9.5</aspectj.version>
+        <servlet.version>3.1.0</servlet.version>
+        <springboot.autoconfigure>2.2.8.RELEASE</springboot.autoconfigure>
+    </properties>
+
     <dependencies>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
+            <version>${springboot.autoconfigure}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aop</artifactId>
+            <version>${spring.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>${aspectj.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${spring.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
         <!-- 测试工具依赖 -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.13</version>
             <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.12</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>5.3.8</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>29.0-jre</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.10</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- 去http://commons.apache.org/上看还会有apache commons其余的42个包，有需要可以去了解下 -->
+        <dependency>
+            <groupId>commons-dbutils</groupId>
+            <artifactId>commons-dbutils</artifactId>
+            <version>1.7</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 
@@ -33,9 +118,9 @@
 
     <!-- SCM信息 -> git在github上托管 -->
     <scm>
-        <connection>scm:git:git://github.com/ican2056/doit.git</connection>
-        <developerConnection>scm:git:ssh://github.com/ican2056/doit.git</developerConnection>
         <url>https://github.com/ican2056/doit/tree/master</url>
+        <connection>scm:git:git@github.com:ican2056/doit.git</connection>
+        <developerConnection>scm:git:git@github.com:ican2056/doit.git</developerConnection>
     </scm>
 
     <!-- 开发者信息 -->
@@ -52,6 +137,7 @@
         <profile>
             <id>ossrh</id>
             <activation>
+                <!-- 设置成false的话Javadoc、Source等插件的配置就不生效，减少编译时间 -->
                 <activeByDefault>true</activeByDefault>
             </activation>
             <build>
@@ -91,8 +177,8 @@
                             <additionalparam>-Xdoclint:none</additionalparam>
                         </configuration>
                     </plugin>
-                    <!--  必须配置GPG插件用于使用以下配置对组件进行签名 -->
-                    <plugin>
+                    <!--  发布RELEASE版本必须配置GPG插件用于使用以下配置对组件进行签名 -->
+                    <!--<plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-gpg-plugin</artifactId>
                         <version>1.5</version>
@@ -105,7 +191,7 @@
                                 </goals>
                             </execution>
                         </executions>
-                    </plugin>
+                    </plugin>-->
                 </plugins>
             </build>
             <!-- 【注】snapshotRepository 与 repository 中的 id 一定要与 setting.xml 中 server 的 id 保持一致！ -->

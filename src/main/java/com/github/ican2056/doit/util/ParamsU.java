@@ -1,4 +1,6 @@
-package com.github.ican2056.doit;
+package com.github.ican2056.doit.util;
+
+import cn.hutool.core.util.ReUtil;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -16,7 +18,7 @@ public class ParamsU {
      */
     public static Map<String, String> paramsStr2Map(String params, String separator){
         Map<String, String> map = new HashMap<>();
-        String[] kvsArr = params.split(RegU.escapeStr(separator));
+        String[] kvsArr = params.split(ReUtil.escape(separator));
         for (String kv : kvsArr) {
             String[] kvArr = kv.split("=");
             if(kvArr.length >= 2){
@@ -30,6 +32,9 @@ public class ParamsU {
         return map2ParamsStr(map, DEFAULT_SEPARATOR);
     }
 
+    /**
+     * 将map转成用 分隔符 连起来的key=value字符串
+     */
     public static String map2ParamsStr(Map<String, String> map, String separator){
         if(map.isEmpty()){
             return "";
