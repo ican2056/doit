@@ -13,7 +13,7 @@
     <url>https://github.com/ican2056/doit</url>
 
     <properties>
-        <spring.version>5.1.16.RELEASE</spring.version>
+        <spring.version>5.2.20.RELEASE</spring.version>
         <aspectj.version>1.9.5</aspectj.version>
         <servlet.version>3.1.0</servlet.version>
         <springboot.autoconfigure>2.2.8.RELEASE</springboot.autoconfigure>
